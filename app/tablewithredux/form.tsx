@@ -18,23 +18,22 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { getComment } from "./action";
 const FormSchema = z.object({
-  postId: z.coerce.number(),
+  accountNumber: z.coerce.number(),
 });
 
 export function InputForm() {
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
-      postId: 0,
+      accountNumber: 0,
     },
   });
   function onSubmit(data: z.infer<typeof FormSchema>) {
     const fetchData = async () => {
       const formData = new FormData();
-      formData.append("postId", data.postId.toString());
+      formData.append("accountNumber", data.accountNumber.toString());
       try {
         const comments = await getComment(formData);
-        console.log(comments);
         store.dispatch(commentSlice.actions.setComment(comments));
       } catch (error) {
         console.error(error);
@@ -49,12 +48,12 @@ export function InputForm() {
       <form onSubmit={form.handleSubmit(onSubmit)} className="w-2/3 space-y-6">
         <FormField
           control={form.control}
-          name="postId"
+          name="accountNumber"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Post ID</FormLabel>
+              <FormLabel>Account Number</FormLabel>
               <FormControl>
-                <Input placeholder="Enter the PostID" {...field} />
+                <Input placeholder="Enter the Number" {...field} />
               </FormControl>
               <FormDescription>
                 This is your public display name.

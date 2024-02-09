@@ -1,25 +1,25 @@
 "use client";
-import { Comment } from "@/redux/slices/commentSlice";
+import { Account } from "@/redux/slices/accountSlice";
 import { ColumnDef } from "@tanstack/react-table";
-export const columns: ColumnDef<Comment>[] = [
+export const columns: ColumnDef<Account>[] = [
   {
-    header: "ID",
-    accessorKey: "id",
+    header: "Account Name",
+    accessorKey: "accountName",
   },
   {
-    header: "postId",
-    accessorKey: "postId",
+    header: "Account Number",
+    accessorKey: "accountNumber",
   },
   {
-    header: "NAME",
-    accessorKey: "name",
+    header: "Account Type",
+    accessorKey: "accountType",
   },
   {
     header: "EMAIL",
     accessorKey: "email",
   },
   {
-    header: "BODY",
-    accessorKey: "body",
+    header: "ID",
+    accessorKey: "id",
   },
 ];

@@ -3,11 +3,13 @@
 // import React from "react";
 import React, { useEffect } from "react";
 import { Provider } from "react-redux";
+import { AccountData } from "./slices/accountSlice";
 import { Postarray, postSlice } from "./slices/postSlice";
 import { store } from "./store";
 interface ProvidersProps {
   children: React.ReactNode;
   post: Postarray;
+  account: AccountData;
 }
 
 export const Providers: React.FC<ProvidersProps> = ({ children, post }) => {
